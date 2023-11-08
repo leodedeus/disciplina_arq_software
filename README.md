@@ -1,4 +1,4 @@
-# disciplina_arq_software
+# Projeto Disciplina Arquitetura de Software
 Repositório destinado a armazenar o projeto desenvolvido na Disciplina Arquitetura de Software
 
 Para executar o projeto, siga os passos (não sei se ta certo, mas imagino que seja isso):
