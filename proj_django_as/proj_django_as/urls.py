@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from arq_soft.views import home
+from arq_soft.views import home, save_station
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
+    path('save_station/', save_station, name='save_station'),
 ]

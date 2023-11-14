@@ -4,21 +4,25 @@
     <title>Mapa Leaflet</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    
+    {% load static %}
 </head>
 <body>
     <div id="map" style="width: 1500px; height: 800px;"></div>
-    <script>
-        var map = L.map('map').setView([-15.794092, -47.882842], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        
-        {% for station in stations %}
-            L.marker([{{ station.lat }}, {{ station.lon }}])
-                .addTo(map)
-                .bindPopup("Estação: {{ station.station_name }} <br> Número: {{ station.station_number }}");
-        {% endfor %}
-    
-    
+    <script src="{% static 'mapa.js' %}"></script>
+    <script>        
+        // Cria um array com os dados das estações
+        var stations = [
+            {% for station in stations %}
+                {
+                    lat: {{ station.lat }},
+                    lon: {{ station.lon }},
+                    station: "{{ station.station }}"
+                },
+            {% endfor %}
+        ];
+
+        // Chama a função addMarkers para adicionar os marcadores ao mapa
+        addMarkers(map, stations);
     </script>
 </body>
 </html>
